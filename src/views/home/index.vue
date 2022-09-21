@@ -4,12 +4,14 @@
     <hea-bar :list="banner" />
     <nav-list :list="mall_nav" />
     <must-buy />
-    <nav-tab
-    class="tab"
-    :tabs="host_nav"
-    @change="navchange"
-    />
+    <div ref="content">
+      <nav-tab
+      class="tab"
+      :tabs="host_nav"
+      @change="navchange"
+      />
     <product-list :list="product" />
+    </div>
   </div>
 </template>
 
@@ -73,7 +75,7 @@ export default {
     async fetchProductList () {
       const res = await this.$api.product.list(this.fetchProductParams)
       if (this.fetchProductParams.page === 1) {
-        this.products = res.data.data
+        this.product = res.data.data
       } else {
         this.product = this.product.concat(res.data.data)
       }
@@ -82,6 +84,12 @@ export default {
     navchange (index, item) {
       this.fetchProductParams.classid = item.id
       this.fetchProductParams.page = 1
+      const top = this.$refs.content.offsetTop
+      const scrollTop = document.querySelector('html').scrollTop
+      if (scrollTop > top) {
+        window.scrollTo(0, this.$refs.content.offsetTop)
+        console.log(this.$refs.content.offsetTop);
+      }
     }
   }
 }

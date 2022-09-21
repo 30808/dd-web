@@ -39,6 +39,8 @@ export default {
   padding: 0 32px;
   box-sizing: border-box;
   display: flex;
+  background: #ccc;
+  margin-top: -1px;
   justify-content: space-between;
   border-bottom: 2px solid #ccc;
   overflow: auto;
