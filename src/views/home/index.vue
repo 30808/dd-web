@@ -21,8 +21,10 @@ import MustBuy from './components/MustBuy.vue'
 import NavList from './components/NavList.vue'
 import HeaBar from './components/HeaBar.vue'
 import HeaTit from './components/HeaTit.vue'
+import scroll from '@/mixins/scroll'
 export default {
   name: 'home-index',
+  mixins: [scroll],
   data () {
     return {
       banner: [],
@@ -53,18 +55,10 @@ export default {
   created () {
     this.initHomeData()
   },
-  mounted () {
-    window.addEventListener('scroll', this.scroll, false)
+  scrollBottom () {
+   this.fetchProductParams.page += 1
   },
   methods: {
-    scroll () {
-      const windowHeight = window.innerHeight
-      const pageHeight = document.body.clientHeight
-      const scrollTop = document.querySelector('html').scrollTop
-      if (pageHeight - scrollTop < windowHeight + 10) {
-        this.fetchProductParams.page += 1
-      }
-    },
     initHomeData () {
       this.$api.home.base().then(res => {
         this.banner = res.data.data.banner
