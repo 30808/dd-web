@@ -1,0 +1,46 @@
+$black                 : #333333;
+$white                 : #ffffff;
+
+// 暗色，灰色
+$color-dark            : #000;
+$color-dark-hover      : darken( $color-dark, 8% );
+$color-grey            : #999999;
+$color-grey-hover      : darken( $color-grey, 8% );
+
+// 主要色系
+$color-primary         : #EE3344;
+$color-primary-hover   : darken( $color-primary, 8% );
+$color-secondary       : #FC6120;
+$color-secondary-hover : darken( $color-secondary, 8% );
+
+$color-success         : #5cb85c;
+$color-success-hover   : darken( $color-success, 8% );
+$color-warning         : #d9534f;
+$color-warning-hover   : darken( $color-warning, 8% );
+
+// 文本颜色
+$color-text-base  : $black;
+$color-text-grey  : $color-grey;
+
+// 线条颜色
+$color-border : #E0E0E0;
+
+// 文本状态颜色
+$color-link-base : $color-primary;
+$color-link-hover : darken( $color-primary, 8% );
+
+// Colors: Forms Background Color
+$color-background-form : #F8F8F8;
+
+
+// 2. 字体
+// =================================
+$font-family--default    : 'Roboto', Arial, Helvetica, sans-serif;
+
+// 字号
+$font-size-xs    : 12px;
+$font-size-s     : 14px;
+$font-size-m     : 16px;
+$font-size-l     : 18px;
+$font-size-xl    : 20px;
+$font-size-xxl   : 24px;
