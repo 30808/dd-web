@@ -6,7 +6,8 @@ const api = {
     base: () => axios.get('/home')
   },
   product: {
-    list: (params) => axios.get('/product', params)
+    list: (params) => axios.get('/product', params),
+    category: () => axios.get('/product/category')
   }
 }
 

@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import NavTab from './components/NavTab.vue'
 import MustBuy from './components/MustBuy.vue'
 import NavList from './components/NavList.vue'
 import HeaBar from './components/HeaBar.vue'
@@ -34,7 +33,7 @@ export default {
       fetchProductParams: {
         page: 1,
         page_size: 10,
-        classid: 1
+        category_id: 1
       }
     }
   },
@@ -42,8 +41,7 @@ export default {
     HeaTit,
     HeaBar,
     NavList,
-    MustBuy,
-    NavTab
+    MustBuy
   },
   watch: {
     fetchProductParams: {
@@ -61,22 +59,22 @@ export default {
   methods: {
     initHomeData () {
       this.$api.home.base().then(res => {
-        this.banner = res.data.data.banner
-        this.mall_nav = res.data.data.mall_nav
-        this.host_nav = res.data.data.host_nav
+        this.banner = res.data.banner
+        this.mall_nav = res.data.mall_nav
+        this.host_nav = res.data.host_nav
       })
     },
     async fetchProductList () {
       const res = await this.$api.product.list(this.fetchProductParams)
       if (this.fetchProductParams.page === 1) {
-        this.product = res.data.data
+        this.product = res.data
       } else {
-        this.product = this.product.concat(res.data.data)
+        this.product = this.product.concat(res.data)
       }
       console.log(res);
     },
     navchange (index, item) {
-      this.fetchProductParams.classid = item.id
+      this.fetchProductParams.category_id = item.id
       this.fetchProductParams.page = 1
       const top = this.$refs.content.offsetTop
       const scrollTop = document.querySelector('html').scrollTop

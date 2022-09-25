@@ -46,14 +46,21 @@ export default {
       img{
         width: 240px;
         height: 240px;
-        margin-right: 30px;
       }
     }
     dd{
+      margin: 30px;
       header{
         .title{
+          // width: auto;
           font-size: 34px;
           color: #000;
+           min-width: 0;
+           overflow: hidden;
+           text-overflow: ellipsis;
+           display: -webkit-box;
+           -webkit-line-clamp: 2;
+           -webkit-box-orient: vertical;
         }
         p{
           font-size: 24px;
